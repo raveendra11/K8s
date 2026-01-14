@@ -1,2 +1,2 @@
 # K8s
-A project on Kubernetes 
+A project on Kubernetes with GCP.
