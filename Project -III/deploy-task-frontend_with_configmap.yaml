@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy-task-frontend
+  name: deploy-task-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: task-frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: task-frontend
+    spec:
+      containers:
+      - image: bhabanisn/task-frontend
+        name: task-frontend-con
+        env:
+          - name: BACKEND_SERVICE_DNS
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config-map
+                key: backend-dns 
+          - name: BACKEND_SERVICE_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config-map
+                key: backend-port
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi

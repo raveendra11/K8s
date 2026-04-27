@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    #networking.gke.io/load-balancer-type: "Internal"
+  labels:
+    app: deploy-task-frontend
+  name: task-frontend-lb-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: task-frontend
+  type: LoadBalancer
