@@ -1,1 +1,29 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: task-frontend
+  name: task-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: task-frontend
+    spec:
+      containers:
+      - image: bhabanisn/task-frontend
+        name: task-frontend
+        env:
+          - name: BACKEND_SERVICE_DNS
+            value: task-backend-clusterip-svc.default.svc.cluster.local
+          - name: BACKEND_SERVICE_PORT
+            value: "8082"
+        resources: {}
+status: {}
