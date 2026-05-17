@@ -1,0 +1,6 @@
+Please create a database called Task and run below 2 queries in there.
+
+Also create user called sqluser with password sql123 if you want to use the files as is.
+
+CREATE TABLE task (task_id VARCHAR(50), task_name VARCHAR(100), task_priority VARCHAR(50) );
+insert into task values('Task1' , 'My Task 1' , 'High');
